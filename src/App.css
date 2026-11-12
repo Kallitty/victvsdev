@@ -1,0 +1,295 @@
+@font-face {
+    font-family: EloquiaBold;
+    src: url("./fonts/Typekiln\ -\ EloquiaDisplay-ExtraBold.otf") format("opentype");
+}
+
+@font-face {
+    font-family: EloquiaLight;
+    src: url("./fonts/Typekiln\ -\ EloquiaText-ExtraLight.otf") format("opentype");
+}
+
+@font-face {
+    font-family: BokoniqueRegular;
+    src: url("./fonts/Bokonique-Regular.otf") format("opentype");
+}
+
+@font-face {
+    font-family: Neuzeit;
+    src: url("./fonts/Neuzeit\ Office\ W01\ Regular.ttf") format("truetype");
+}
+
+html {
+    background-color: #02020a;
+}
+
+.App {
+    text-align: center;
+    height: 100%;
+    background-color: #02020a;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: space-between;
+}
+
+p {
+    font-family: BokoniqueRegular;
+}
+
+.Header {
+    margin-top: 36px;
+    padding: 16px;
+    font-size: 3rem;
+    font-family: EloquiaBold;
+    line-height: 70%;
+}
+
+.Header h1 {
+    margin: -10px;
+    line-height: 0%;
+    font-size: 3.4rem;
+}
+
+.Header span {
+    font-family: EloquiaLight;
+    font-size: 2.2rem;
+    border-bottom: 1px solid #ffffff;
+}
+
+.Link {
+    width: 90%;
+    text-decoration: none;
+    font-family: Neuzeit;
+    font-weight: 600;
+    color: #02020a;
+    background-color: #ffffff;
+    padding: 14px;
+    border-radius: 10px;
+    border: 1px solid #ffffff;
+    margin: 4px;
+}
+
+.Link:hover {
+    color: #ffffff;
+    background-color: #02020a;
+    border: 1px solid #ffffff;
+    transition: linear 250ms;
+}
+
+.Navigation {
+    font-size: 1.5rem;
+    margin-top: 36px;
+}
+
+.MainLinks {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+}
+
+.IntroductionText {
+    margin-left: 20%;
+    max-width: 60%;
+}
+
+.IntroductionText p {
+    margin: 4px;
+    font-size: large;
+}
+
+.ExamList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#SessionList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    margin: 20px;
+}
+
+.ExamCard {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    color: #02020a;
+    background-color: #ffffff;
+    padding: 12px;
+    border-radius: 12px;
+    margin: 12px 5vw;
+    text-align: left;
+}
+
+.ExamCard h3 {
+    font-family: EloquiaLight;
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.LocationDetails {
+    text-align: right;
+}
+
+.LocationDetails p {
+    font-size: medium;
+}
+
+.FilterContainer {
+    margin: -10px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.FilterModal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: rgb(0, 0, 0);
+}
+
+.ModalContent {
+    width: 80vw;
+    border-radius: 12px;
+    background-color: #ffffff;
+}
+
+.ModalHeader,
+.ModalFooter {
+    padding: 10px;
+}
+
+.ModalTitle {
+    margin: 0;
+}
+
+.ModalBody {
+    padding: 12px 10px;
+    margin-left: 5%;
+}
+
+input {
+    outline: none;
+    width: 90%;
+    border: none;
+    border-bottom: 1px solid black;
+    margin: 0px 0px 12px 2px;
+}
+
+input:focus {
+    border-bottom: 2px solid black;
+}
+
+label {
+    font-size: small;
+    font-family: BokoniqueRegular;
+    text-align: left;
+}
+
+.Button {
+    font-family: Neuzeit;
+    background-color: #02020a;
+    padding: 10px;
+    margin: 10px;
+    width: 90%;
+    color: #ffffff;
+    border-radius: 6px;
+    border: 1px solid #02020a;
+}
+
+.Button:hover {
+    cursor: pointer;
+    background-color: #ffffff;
+    color: #02020a;
+    transition: linear 250ms;
+}
+
+.FilterButton {
+    font-family: Neuzeit;
+    background-color: #ffffff;
+    padding: 10px;
+    font-size: medium;
+    margin: 5px;
+    color: #02020a;
+    border: 1px solid #ffffff;
+    border-radius: 6px;
+}
+
+.FilterButton:hover {
+    cursor: pointer;
+    background-color: #02020a;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    transition: linear 250ms;
+}
+
+.FilterField {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+.ButtonField {
+    display: flex;
+    margin-top: -10px;
+}
+
+.GoogleMap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Footer p {
+    font-size: medium;
+    font-family: BokoniqueRegular;
+    font-weight: 100;
+    margin-top: 20px;
+}
+
+.Footer p span {
+    font-family: EloquiaLight;
+    border-bottom: 1px solid #ffffff;
+}
+
+@media screen and (min-width: 769px) {
+    .Header {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+    .Navigation {
+        margin: 0;
+    }
+    .IntroductionText p {
+        font-size: larger;
+    }
+    h2 {
+        font-size: 30px;
+    }
+    .FilterButton {
+        font-size: larger;
+        margin: 5px;
+    }
+    .ExamCard {
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 321px) {
+    .Link {
+        font-size: medium;
+    }
+}
