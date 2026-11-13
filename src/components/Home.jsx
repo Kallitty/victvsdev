@@ -3,10 +3,7 @@ export default function Home() {
     <main className="Home">
       <h2>Introduction</h2>
       <section className="IntroductionText">
-        <p>
-          You can use this dummy Frontend as base for your project or create your own Frontend for this
-          technical test
-        </p>
+        <p>Dummy Frontend... Write good stuffs here</p>
       </section>
     </main>
   );
