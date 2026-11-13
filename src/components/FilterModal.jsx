@@ -1,17 +1,17 @@
 import { useState } from 'react';
-import { toast } from "react-hot-toast";
+import { toast } from 'react-hot-toast';
 
 export default function FilterModal(props) {
-  const [ filterDate, setFilterDate ] = useState("");
-  const [ filterName, setFilterName ] = useState("");
-  const [ filterLocation, setFilterLocation ] = useState("");
+  const [filterDate, setFilterDate] = useState('');
+  const [filterName, setFilterName] = useState('');
+  const [filterLocation, setFilterLocation] = useState('');
 
   const toastStyle = {
     style: {
-      borderRadius: "12px",
-      padding: "12px",
-      color: "#02020a",
-      backgroundColor: "#FFFFFF",
+      borderRadius: '12px',
+      padding: '12px',
+      color: '#02020a',
+      backgroundColor: '#FFFFFF',
     },
   };
 
@@ -20,25 +20,25 @@ export default function FilterModal(props) {
   }
 
   const handleAddFilters = (filterDate, filterName, filterLocation) => {
-    const params = { date: "", name: "", location: "" };
+    const params = { date: '', name: '', location: '' };
     const dateRegEx = /([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/;
     let toastMessage = '';
 
     if (dateRegEx.test(filterDate) && filterDate !== '') {
       params.date = filterDate;
-      toastMessage += "Added Date Filter: " + params.date + '\n';
+      toastMessage += 'Added Date Filter: ' + params.date + '\n';
       setFilterDate('');
-    } 
+    }
 
-    if (filterName !== "") {
+    if (filterName !== '') {
       params.name = filterName;
-      toastMessage += "Added Name Filter: " + params.name + "\n";
-      setFilterName("");
-    } 
-    if (filterLocation !== "") {
+      toastMessage += 'Added Name Filter: ' + params.name + '\n';
+      setFilterName('');
+    }
+    if (filterLocation !== '') {
       params.location = filterLocation;
-      toastMessage += "Added Location Filter: " + params.location + "\n";
-      setFilterLocation ("");
+      toastMessage += 'Added Location Filter: ' + params.location + '\n';
+      setFilterLocation('');
     }
 
     if (toastMessage) {
@@ -50,15 +50,13 @@ export default function FilterModal(props) {
 
   const handleClose = () => {
     props.setHide(true);
-  }
+  };
 
   return (
     <div className="FilterModal">
       <div className="ModalContent">
         <div className="ModalHeader">
-          <h4 className="ModalTitle">
-            Filter Exam Sessions
-          </h4>
+          <h4 className="ModalTitle">Filter Exam Sessions</h4>
         </div>
         <div className="ModalBody">
           <div className="FilterField">
@@ -93,19 +91,14 @@ export default function FilterModal(props) {
             <button
               className="FilterButton"
               id="AddFilterButton"
-              onClick={() =>
-                handleAddFilters(filterDate, filterName, filterLocation)
-              }
+              onClick={() => handleAddFilters(filterDate, filterName, filterLocation)}
             >
               + Add Filters
             </button>
           </div>
         </div>
         <div className="ModalFooter">
-          <button
-            className="Button"
-            onClick={() => handleClose() }
-          >
+          <button className="Button" onClick={() => handleClose()}>
             Close
           </button>
         </div>

@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react'
-import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api'
-import examIcon from '../images/exam.png'
+import React, { useEffect, useState } from 'react';
+import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
+import examIcon from '../images/exam.png';
 
 const containerStyle = {
   width: '90vw',
   height: '400px',
   borderRadius: '10px',
-}
+};
 
 const mapStyle = [
   {
@@ -193,39 +193,39 @@ const mapStyle = [
       },
     ],
   },
-]
+];
 
 const center = {
   lat: 53.796,
   lng: -1.566,
-}
+};
 
 function ExamMap() {
-  const [examSessions, setExamSessions] = useState([])
-  const [map, setMap] = useState(null)
+  const [examSessions, setExamSessions] = useState([]);
+  const [map, setMap] = useState(null);
 
   // TODO: fetch the relevant data to set the longitude and latitude
   useEffect(() => {
     // fetchExamSessions()
     //   .then((examSessionsData) => setExamSessions(examSessionsData));
-  }, [])
+  }, []);
 
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
-  })
+  });
 
   const onLoad = React.useCallback(function callback(map) {
-    map.setZoom(9)
-    setMap(map)
-  }, [])
+    map.setZoom(9);
+    setMap(map);
+  }, []);
 
   const onUnmount = React.useCallback(function callback(map) {
-    setMap(null)
-  }, [])
+    setMap(null);
+  }, []);
 
   return isLoaded ? (
-    <main className='GoogleMap'>
+    <main className="GoogleMap">
       <h2>Exam Sessions Map</h2>
       <GoogleMap
         mapContainerStyle={containerStyle}
@@ -239,16 +239,14 @@ function ExamMap() {
           const latAndLon = {
             lat: parseFloat(session.Latitude),
             lng: parseFloat(session.Longitude),
-          }
-          return (
-            <Marker position={latAndLon} icon={examIcon} key={session.id} />
-          )
+          };
+          return <Marker position={latAndLon} icon={examIcon} key={session.id} />;
         })}
       </GoogleMap>
     </main>
   ) : (
     <p>Loading...</p>
-  )
+  );
 }
 
-export default React.memo(ExamMap)
+export default React.memo(ExamMap);
