@@ -20,3 +20,8 @@
   border: 1px solid var(--danger, #ff6b6b);
   border-radius: 12px;
 }
+
+.noMatch {
+  padding: 2rem 1rem;
+  text-align: center;
+}
