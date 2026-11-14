@@ -1,0 +1,22 @@
+.page {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 3rem;
+}
+
+.intro {
+  color: var(--muted, #a0a0b0);
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.error {
+  padding: 1rem;
+  border: 1px solid var(--danger, #ff6b6b);
+  border-radius: 12px;
+}

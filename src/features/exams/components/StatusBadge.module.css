@@ -1,0 +1,21 @@
+.badge {
+  display: inline-block;
+  padding: 0.15rem 0.6rem;
+  border: 1px solid currentcolor;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.pending {
+  color: var(--pending, #f6c453);
+}
+
+.started {
+  color: var(--started, #6cb6ff);
+}
+
+.finished {
+  color: var(--finished, #57d38c);
+}
