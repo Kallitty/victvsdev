@@ -62,3 +62,21 @@ export function toDateTimeAttribute(value: string): string | undefined {
   const epochMs = parseExamInstant(value);
   return epochMs === null ? undefined : new Date(epochMs).toISOString();
 }
+
+const dateKeyFormatters = new Map<string, Intl.DateTimeFormat>();
+
+/** The calendar date ("2026-04-15") of an instant as seen in a time zone. */
+export function dateKeyInZone(epochMs: number, timeZone: string): string {
+  let formatter = dateKeyFormatters.get(timeZone);
+  if (!formatter) {
+    // en-CA formats dates as YYYY-MM-DD, which also sorts correctly as text.
+    formatter = new Intl.DateTimeFormat('en-CA', {
+      timeZone,
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+    });
+    dateKeyFormatters.set(timeZone, formatter);
+  }
+  return formatter.format(epochMs);
+}

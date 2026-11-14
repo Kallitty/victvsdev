@@ -1,25 +1,27 @@
 import { useMemo } from 'react';
 
 import { getErrorMessage } from '@/shared/api/errors';
-import { parseExamInstant } from '@/shared/lib/datetime';
 
+import { ExamFilterBar } from '../components/ExamFilterBar';
 import { ExamTable } from '../components/ExamTable';
 import { useAdvanceExamStatus } from '../hooks/useAdvanceExamStatus';
+import { useExamListParams } from '../hooks/useExamListParams';
 import { useExamsQuery } from '../hooks/useExamsQuery';
+import { filterExams, getFilterOptions, sortExams } from '../model/filters';
 import type { Exam } from '../model/types';
 import styles from './ExamList.module.css';
 
 const NO_EXAMS: Exam[] = [];
-const byDate = (a: Exam, b: Exam) =>
-  (parseExamInstant(a.datetime) ?? Infinity) - (parseExamInstant(b.datetime) ?? Infinity);
 
-/** Container: owns data and state; ExamTable just renders what it's given. */
+/** Container: server data from React Query, filters and sort from the URL. */
 export function ExamList() {
   const { data, isPending, isError, error, isFetching, refetch } = useExamsQuery();
   const { advance, pendingIds } = useAdvanceExamStatus();
+  const { filters, sort, setFilters, resetFilters, changeSort } = useExamListParams();
 
   const exams = data ?? NO_EXAMS;
-  const sorted = useMemo(() => [...exams].sort(byDate), [exams]);
+  const options = useMemo(() => getFilterOptions(exams), [exams]);
+  const visible = useMemo(() => sortExams(filterExams(exams, filters), sort), [exams, filters, sort]);
 
   return (
     <main id="main" className={styles.page}>
@@ -43,13 +45,33 @@ export function ExamList() {
 
       {exams.length > 0 && (
         <>
+          <ExamFilterBar filters={filters} options={options} onChange={setFilters} onReset={resetFilters} />
+
           <div className={styles.toolbar}>
-            <p aria-live="polite">{exams.length} sessions</p>
+            <p aria-live="polite">
+              Showing {visible.length} of {exams.length} sessions
+            </p>
             <button type="button" onClick={() => void refetch()} disabled={isFetching}>
               {isFetching ? 'Refreshing…' : 'Refresh'}
             </button>
           </div>
-          <ExamTable exams={sorted} pendingIds={pendingIds} onAdvance={advance} />
+
+          {visible.length > 0 ? (
+            <ExamTable
+              exams={visible}
+              sort={sort}
+              onSort={changeSort}
+              pendingIds={pendingIds}
+              onAdvance={advance}
+            />
+          ) : (
+            <div className={styles.noMatch}>
+              <p>No sessions match these filters.</p>
+              <button type="button" onClick={resetFilters}>
+                Clear filters
+              </button>
+            </div>
+          )}
         </>
       )}
     </main>

@@ -50,3 +50,28 @@
     color: var(--muted, #a0a0b0);
   }
 }
+
+.sortButton {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.sortButton::after {
+  content: ' ↕';
+  opacity: 0.4;
+}
+
+th[aria-sort='ascending'] .sortButton::after {
+  content: ' ▲';
+  opacity: 1;
+}
+
+th[aria-sort='descending'] .sortButton::after {
+  content: ' ▼';
+  opacity: 1;
+}
