@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import Home from '@/components/Home';
-import ExamList from '@/components/ExamList';
+import { ExamList } from '@/features/exams';
 import ExamMap from '@/components/ExamMap';
 import './App.css';
 
