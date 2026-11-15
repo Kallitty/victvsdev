@@ -1,0 +1,48 @@
+/*
+ * Design tokens: the only place raw colours live. Components use var(--token), so
+ * a change here restyles the whole app, and the light theme is just new values.
+ */
+:root {
+  /* --ink and --paper are always a background/foreground pair. */
+  --ink: #02020a;
+  --paper: #ffffff;
+  --surface: #0f0f1a;
+  --line: #2c2c3d;
+  --muted: #a3a3b8;
+  --focus: #7cc4ff;
+
+  --pending: #f5b942;
+  --started: #5aa9ff;
+  --finished: #4fd18b;
+  --danger: #ff6b6b;
+
+  --radius: 12px;
+  --content-width: 1200px;
+
+  /* Names match the @font-face rules in global.css (the starter's VICTVS fonts). */
+  --font-body: BokoniqueRegular, system-ui, sans-serif;
+  --font-ui: Neuzeit, system-ui, sans-serif;
+  --font-display: EloquiaBold, georgia, serif;
+  --font-display-light: EloquiaLight, georgia, serif;
+
+  --transition-fast: 200ms ease;
+
+  color-scheme: dark;
+}
+
+/* Light theme: ink and paper swap, and status colours are darkened to keep 4.5:1 contrast. */
+:root[data-theme='light'] {
+  --ink: #ffffff;
+  --paper: #02020a;
+  --surface: #f3f3f7;
+  --line: #d4d4df;
+  --muted: #555568;
+  --focus: #0b5cad;
+
+  --pending: #8a5a00;
+  --started: #0b5cad;
+  --finished: #11683b;
+  --danger: #c62828;
+
+  color-scheme: light;
+}

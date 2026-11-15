@@ -1,32 +1,12 @@
-@font-face {
-  font-family: EloquiaBold;
-  src: url('./fonts/Typekiln\ -\ EloquiaDisplay-ExtraBold.otf') format('opentype');
-}
-
-@font-face {
-  font-family: EloquiaLight;
-  src: url('./fonts/Typekiln\ -\ EloquiaText-ExtraLight.otf') format('opentype');
-}
-
-@font-face {
-  font-family: BokoniqueRegular;
-  src: url('./fonts/Bokonique-Regular.otf') format('opentype');
-}
-
-@font-face {
-  font-family: Neuzeit;
-  src: url('./fonts/Neuzeit\ Office\ W01\ Regular.ttf') format('truetype');
-}
-
 html {
-  background-color: #02020a;
+  background-color: var(--ink);
 }
 
 .App {
   text-align: center;
   height: 100%;
-  background-color: #02020a;
-  color: #ffffff;
+  background-color: var(--ink);
+  color: var(--paper);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -37,55 +17,24 @@ p {
   font-family: BokoniqueRegular;
 }
 
-.Header {
-  margin-top: 36px;
-  padding: 16px;
-  font-size: 3rem;
-  font-family: EloquiaBold;
-  line-height: 70%;
-}
-
-.Header h1 {
-  margin: -10px;
-  line-height: 0%;
-  font-size: 3.4rem;
-}
-
-.Header span {
-  font-family: EloquiaLight;
-  font-size: 2.2rem;
-  border-bottom: 1px solid #ffffff;
-}
-
 .Link {
   width: 90%;
   text-decoration: none;
   font-family: Neuzeit;
   font-weight: 600;
-  color: #02020a;
-  background-color: #ffffff;
+  color: var(--ink);
+  background-color: var(--paper);
   padding: 14px;
   border-radius: 10px;
-  border: 1px solid #ffffff;
+  border: 1px solid var(--paper);
   margin: 4px;
 }
 
 .Link:hover {
-  color: #ffffff;
-  background-color: #02020a;
-  border: 1px solid #ffffff;
+  color: var(--paper);
+  background-color: var(--ink);
+  border: 1px solid var(--paper);
   transition: linear 250ms;
-}
-
-.Navigation {
-  font-size: 1.5rem;
-  margin-top: 36px;
-}
-
-.MainLinks {
-  display: flex;
-  justify-content: space-evenly;
-  flex-direction: row;
 }
 
 .IntroductionText {
@@ -116,8 +65,8 @@ p {
   display: flex;
   justify-content: space-around;
   align-items: flex-end;
-  color: #02020a;
-  background-color: #ffffff;
+  color: var(--ink);
+  background-color: var(--paper);
   padding: 12px;
   border-radius: 12px;
   margin: 12px 5vw;
@@ -162,7 +111,7 @@ p {
 .ModalContent {
   width: 80vw;
   border-radius: 12px;
-  background-color: #ffffff;
+  background-color: var(--paper);
 }
 
 .ModalHeader,
@@ -199,38 +148,38 @@ label {
 
 .Button {
   font-family: Neuzeit;
-  background-color: #02020a;
+  background-color: var(--ink);
   padding: 10px;
   margin: 10px;
   width: 90%;
-  color: #ffffff;
+  color: var(--paper);
   border-radius: 6px;
-  border: 1px solid #02020a;
+  border: 1px solid var(--ink);
 }
 
 .Button:hover {
   cursor: pointer;
-  background-color: #ffffff;
-  color: #02020a;
+  background-color: var(--paper);
+  color: var(--ink);
   transition: linear 250ms;
 }
 
 .FilterButton {
   font-family: Neuzeit;
-  background-color: #ffffff;
+  background-color: var(--paper);
   padding: 10px;
   font-size: medium;
   margin: 5px;
-  color: #02020a;
-  border: 1px solid #ffffff;
+  color: var(--ink);
+  border: 1px solid var(--paper);
   border-radius: 6px;
 }
 
 .FilterButton:hover {
   cursor: pointer;
-  background-color: #02020a;
-  color: #ffffff;
-  border: 1px solid #ffffff;
+  background-color: var(--ink);
+  color: var(--paper);
+  border: 1px solid var(--paper);
   transition: linear 250ms;
 }
 
@@ -261,7 +210,7 @@ label {
 
 .Footer p span {
   font-family: EloquiaLight;
-  border-bottom: 1px solid #ffffff;
+  border-bottom: 1px solid var(--paper);
 }
 
 @media screen and (min-width: 769px) {
