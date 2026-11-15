@@ -24,9 +24,12 @@ export default defineConfig(({ mode }) => {
     test: {
       environment: 'jsdom',
       globals: true,
-      pool: 'threads',
-      isolate: false,
       setupFiles: './src/setupTests.js',
+      pool: 'threads',
+      isolate: true,
+      clearMocks: true,
+      restoreMocks: true,
+      include: ['src/**/*.test.{ts,tsx}'],
     },
   };
 });
