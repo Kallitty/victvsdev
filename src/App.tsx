@@ -4,7 +4,7 @@ import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 
 import { Header } from '@/app/layout/Header';
 import Footer from '@/components/Footer';
-import Home from '@/components/Home';
+import { HomePage } from '@/app/pages/HomePage';
 import { homePathFor, RequireRole, SignInPage, useAuth } from '@/features/auth';
 import { MyExamsPage } from '@/features/candidate';
 import { ExamList } from '@/features/exams';
@@ -41,7 +41,7 @@ function App() {
               <Route path="/sign-in" element={<SignInPage />} />
 
               <Route element={<RequireRole role="admin" />}>
-                <Route path="/admin" element={<Home />} />
+                <Route path="/admin" element={<HomePage />} />
                 <Route path="/admin/sessions" element={<ExamList />} />
                 <Route path="/admin/map" element={<ExamMapPage />} />
               </Route>

@@ -1,0 +1,86 @@
+.page {
+  width: min(var(--content-width), 100% - 2rem);
+  margin: 0 auto;
+  padding: 1.5rem 0 3rem;
+  text-align: left;
+  line-height: 1.6;
+}
+
+.hero {
+  padding: 2rem 1.5rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.hero h2 {
+  margin-top: 0;
+}
+
+.lead {
+  max-width: 60ch;
+  font-size: 1.1rem;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+.primary,
+.secondary {
+  padding: 0.6rem 1.2rem;
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.primary {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.secondary {
+  color: var(--ink);
+}
+
+.section {
+  margin-top: 2.25rem;
+}
+
+.section p {
+  max-width: 75ch;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: 1rem;
+}
+
+.card {
+  padding: 1.1rem 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.card h4 {
+  margin: 0 0 0.4rem;
+}
+
+.card p {
+  margin: 0;
+}
+
+.list {
+  max-width: 75ch;
+  padding-left: 1.2rem;
+}
+
+.list li + li {
+  margin-top: 0.5rem;
+}
