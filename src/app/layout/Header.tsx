@@ -4,6 +4,7 @@ import { ThemeToggle } from '@/shared/theme';
 
 import styles from './Header.module.css';
 import { Navigation } from './Navigation';
+import { AccountMenu } from '@/features/auth';
 
 export function Header() {
   return (
@@ -15,6 +16,7 @@ export function Header() {
       <div className={styles.actions}>
         <Navigation />
         <ThemeToggle />
+        <AccountMenu />
       </div>
     </header>
   );

@@ -1,0 +1,37 @@
+.page {
+  width: min(60rem, 100% - 2rem);
+  margin: 0 auto;
+  padding: 1.5rem 0 3rem;
+  text-align: left;
+}
+
+.banner {
+  padding: 0.85rem 1rem;
+  border: 1px dashed var(--pending);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: 1.25rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.8rem;
+  padding: 1.5rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  width: 100%;
+}

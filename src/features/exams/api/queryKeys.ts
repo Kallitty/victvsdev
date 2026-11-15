@@ -4,3 +4,8 @@ export const examKeys = {
   lists: () => [...examKeys.all, 'list'] as const,
   advanceStatus: () => [...examKeys.all, 'advance-status'] as const,
 };
+
+export const candidateKeys = {
+  all: ['candidates'] as const,
+  lists: () => [...candidateKeys.all, 'list'] as const,
+};
