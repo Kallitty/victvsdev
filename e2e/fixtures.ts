@@ -31,6 +31,11 @@ export class MockApi {
     // Registered first, so it only catches requests nothing else handles: no test can reach the real API.
     await page.route('**/api/**', (route) => route.fulfill({ status: 501, json: { message: 'Not mocked' } }));
 
+    await page.route('**/api/candidates', (route) => {
+      const all = this.exams.flatMap((e) => (e.candidates ?? []) as { id: number; name: string }[]);
+      return route.fulfill({ json: [...new Map(all.map((c) => [c.id, c])).values()] });
+    });
+
     await page.route('**/api/exams', (route) => route.fulfill({ json: this.exams }));
 
     await page.route('**/api/exams/*/status', async (route) => {
@@ -54,7 +59,9 @@ export class MockApi {
 }
 
 /** Every test gets a fresh fake API automatically (`auto: true`). */
-export const test = base.extend<{ api: MockApi }>({
+export type SignedInAs = 'admin' | { candidateId: number; candidateName: string } | null;
+
+export const test = base.extend<{ api: MockApi; signedInAs: SignedInAs; session: undefined }>({
   api: [
     async ({ page }, use) => {
       const api = new MockApi();
@@ -63,6 +70,28 @@ export const test = base.extend<{ api: MockApi }>({
     },
     { auto: true },
   ],
-});
 
+  /** Who each test starts as. Override with test.use({ signedInAs: null }). */
+  signedInAs: ['admin', { option: true }],
+
+  // Seeds the demo session before the page loads, so tests start where they need to be.
+  session: [
+    async ({ page, signedInAs }, use) => {
+      if (signedInAs !== null) {
+        const now = Date.now();
+        const base = { signedInAt: now, expiresAt: now + 8 * 60 * 60 * 1000 };
+        const session =
+          signedInAs === 'admin' ? { role: 'admin', ...base } : { role: 'candidate', ...signedInAs, ...base };
+        await page.addInitScript(
+          ([key, value]) => {
+            if (window.sessionStorage.getItem(key) === null) window.sessionStorage.setItem(key, value);
+          },
+          ['victvs-session', JSON.stringify(session)] as const,
+        );
+      }
+      await use(undefined);
+    },
+    { auto: true },
+  ],
+});
 export { expect };

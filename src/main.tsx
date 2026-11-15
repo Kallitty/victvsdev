@@ -7,6 +7,8 @@ import { createRoot } from 'react-dom/client';
 
 import { createQueryClient } from '@/app/queryClient';
 import { ThemeProvider } from '@/shared/theme';
+import { BrowserRouter } from 'react-router-dom';
+import { AuthProvider } from '@/features/auth';
 
 import App from './App';
 
@@ -19,7 +21,11 @@ createRoot(rootElement).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
-        <App />
+        <AuthProvider>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </AuthProvider>
       </ThemeProvider>
     </QueryClientProvider>
   </StrictMode>,

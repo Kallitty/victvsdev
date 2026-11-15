@@ -10,3 +10,5 @@ export { normaliseCountry } from './model/country';
 export { STATUS_LABELS } from './model/status';
 export { EXAM_STATUSES } from './model/types';
 export type { Candidate, Exam, ExamLocation, ExamStatus } from './model/types';
+export { useCandidatesQuery } from './hooks/useCandidatesQuery';
+export { examsQueryOptions } from './hooks/useExamsQuery';
