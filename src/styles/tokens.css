@@ -19,6 +19,12 @@
   --radius: 12px;
   --content-width: 1200px;
 
+  /* Leaflet popups are white in both themes; darker status colours keep 4.5:1 contrast. */
+  --popup-text: #02020a;
+  --popup-pending: #8a5a00;
+  --popup-started: #0b5cad;
+  --popup-finished: #11683b;
+
   /* Names match the @font-face rules in global.css (the starter's VICTVS fonts). */
   --font-body: BokoniqueRegular, system-ui, sans-serif;
   --font-ui: Neuzeit, system-ui, sans-serif;

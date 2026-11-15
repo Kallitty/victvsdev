@@ -1,0 +1,44 @@
+.frame {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.map {
+  width: 100%;
+  height: min(60vh, 520px);
+  background: var(--surface);
+}
+
+/* Leaflet popups are always white, whatever the theme, so they use fixed colours. */
+.popup {
+  min-width: 220px;
+  color: var(--popup-text);
+  text-align: left;
+}
+
+.popup ul {
+  display: grid;
+  gap: 0.6rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.popup li {
+  display: grid;
+  gap: 0.1rem;
+}
+
+/* Badges are recoloured through data-status, because CSS Module class names are hashed. */
+.popup [data-status='pending'] {
+  color: var(--popup-pending);
+}
+
+.popup [data-status='started'] {
+  color: var(--popup-started);
+}
+
+.popup [data-status='finished'] {
+  color: var(--popup-finished);
+}
