@@ -1,0 +1,41 @@
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.35rem 0.5rem;
+  border: 0;
+  border-radius: 999px;
+  background: none;
+  color: inherit;
+  font-family: var(--font-ui);
+  cursor: pointer;
+}
+
+.track {
+  position: relative;
+  width: 3rem;
+  height: 1.6rem;
+  border: 1px solid var(--paper);
+  border-radius: 999px;
+  background: var(--surface);
+}
+
+.thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  display: grid;
+  place-items: center;
+  width: calc(1.6rem - 6px);
+  height: calc(1.6rem - 6px);
+  border-radius: 50%;
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 0.75rem;
+  transition: transform var(--transition-fast);
+}
+
+/* Styled from the ARIA state, so what's shown and what's announced always agree. */
+.toggle[aria-checked='true'] .thumb {
+  transform: translateX(1.4rem);
+}

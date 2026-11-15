@@ -50,6 +50,7 @@ export default defineConfig([
   // Config files run in Node.
   { files: ['*.config.{js,ts}'], languageOptions: { globals: globals.node } },
 
+  { files: ['public/**/*.js'], languageOptions: { globals: globals.browser, sourceType: 'script' } },
   // Last: switch off rules that would argue with Prettier.
   prettier,
 ]);

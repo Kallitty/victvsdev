@@ -1,0 +1,75 @@
+/* Brand fonts supplied with the VICTVS starter. */
+@font-face {
+  font-family: EloquiaBold;
+  src: url('../fonts/Typekiln - EloquiaDisplay-ExtraBold.otf') format('opentype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: EloquiaLight;
+  src: url('../fonts/Typekiln - EloquiaText-ExtraLight.otf') format('opentype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: BokoniqueRegular;
+  src: url('../fonts/Bokonique-Regular.otf') format('opentype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Neuzeit;
+  src: url('../fonts/Neuzeit Office W01 Regular.ttf') format('truetype');
+  font-display: swap;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  background-color: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-body);
+  line-height: 1.5;
+}
+
+/* A clear focus ring for keyboard users only (not on mouse clicks). */
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+main:focus {
+  outline: none;
+}
+
+/* Lets keyboard users jump past the header straight to the content. */
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 10;
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius);
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* Respect the OS "reduce motion" setting. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
