@@ -1,0 +1,10 @@
+.countdown {
+  color: var(--pending);
+  font-weight: 600;
+}
+
+.large {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 1.25rem;
+}

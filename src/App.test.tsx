@@ -71,4 +71,20 @@ describe('App routing and roles', () => {
     expect(screen.getByRole('heading', { name: 'Sign in' })).toBeInTheDocument();
     expect(storage.length).toBe(0);
   });
+
+  it('opens a candidate\u2019s own exam, and treats other people\u2019s exams as not found', async () => {
+    vi.mocked(getExams).mockResolvedValue([
+      makeExam({ id: 10, title: 'Woodworking', candidates: [{ id: 1, name: 'Wilmers' }] }),
+      makeExam({ id: 11, title: 'Skydiving', candidates: [{ id: 5, name: 'Donelly' }] }),
+    ]);
+
+    const own = renderWithProviders(<App />, { route: '/me/exams/10', session: testSession('candidate') });
+    expect(await screen.findByRole('heading', { name: 'Woodworking' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Add to calendar' })).toBeInTheDocument();
+    own.unmount();
+
+    renderWithProviders(<App />, { route: '/me/exams/11', session: testSession('candidate') });
+    expect(await screen.findByRole('heading', { name: 'Exam not found' })).toBeInTheDocument();
+    expect(screen.queryByText('Skydiving')).not.toBeInTheDocument();
+  });
 });

@@ -17,6 +17,14 @@ if (!rootElement) throw new Error('Root element #root not found in index.html');
 
 const queryClient = createQueryClient();
 
+// The starter registered a service worker that bypassed the network layer and served stale data.
+// It's removed; this unregisters it from browsers that already installed it.
+if ('serviceWorker' in navigator) {
+  void navigator.serviceWorker.getRegistrations().then((registrations) => {
+    for (const registration of registrations) void registration.unregister();
+  });
+}
+
 createRoot(rootElement).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>

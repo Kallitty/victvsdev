@@ -31,4 +31,19 @@ test.describe('as a candidate', () => {
     await page.goto('/admin/sessions');
     await expect(page.getByRole('heading', { name: "You don't have access to this page" })).toBeVisible();
   });
+
+  test('opens an exam and downloads a calendar file', async ({ page }) => {
+    await page.goto('/me');
+    await page.getByRole('link', { name: 'Certification for Woodworking' }).click();
+    await expect(page).toHaveURL('/me/exams/3');
+
+    const download = page.waitForEvent('download');
+    await page.getByRole('button', { name: 'Add to calendar' }).click();
+    expect((await download).suggestedFilename()).toBe('certification-for-woodworking-2026-04-15.ics');
+  });
+
+  test("can't open another candidate's exam", async ({ page }) => {
+    await page.goto('/me/exams/4'); // Donelly's exam
+    await expect(page.getByRole('heading', { name: 'Exam not found' })).toBeVisible();
+  });
 });

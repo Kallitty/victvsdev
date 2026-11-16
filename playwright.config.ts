@@ -18,6 +18,7 @@ export default defineConfig({
     baseURL: `http://localhost:${PORT}`,
     trace: 'on-first-retry', // a step-by-step recording when a test fails in CI
     screenshot: 'only-on-failure',
+    serviceWorkers: 'block', // nothing may bypass the fake API
   },
   projects: [
     { name: 'desktop', use: { ...devices['Desktop Chrome'] } },

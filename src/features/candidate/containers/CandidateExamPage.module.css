@@ -1,0 +1,44 @@
+.page {
+  width: min(48rem, 100% - 2rem);
+  margin: 0 auto;
+  padding: 1.5rem 0 3rem;
+  text-align: left;
+}
+
+.back {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+
+.details {
+  display: grid;
+  gap: 1rem;
+  margin: 1.5rem 0;
+  padding: 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.details dt {
+  color: var(--muted);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.details dd {
+  margin: 0.2rem 0 0;
+}
+
+.inline {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.notice {
+  padding: 0.85rem 1rem;
+  border: 1px dashed var(--pending);
+  border-radius: var(--radius);
+}
