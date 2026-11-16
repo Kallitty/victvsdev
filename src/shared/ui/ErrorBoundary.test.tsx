@@ -7,7 +7,7 @@ function Broken(): never {
 }
 
 it('shows a recovery message instead of a blank page', () => {
-  const consoleError = vi.spyOn(console, 'error').mockImplementation(() => {});
+  const consoleError = vi.spyOn(console, 'error').mockImplementation(() => undefined);
 
   render(
     <ErrorBoundary>

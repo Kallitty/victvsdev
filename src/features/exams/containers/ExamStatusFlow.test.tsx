@@ -50,7 +50,7 @@ describe('changing an exam status', () => {
 
   it('locks the button while saving, so a double click cannot skip a stage', async () => {
     vi.mocked(getExams).mockResolvedValue([makeExam()]);
-    vi.mocked(updateExamStatus).mockReturnValue(new Promise(() => {})); // never settles
+    vi.mocked(updateExamStatus).mockReturnValue(new Promise(() => undefined)); // never settles
     const { user } = renderWithProviders(<ExamList />);
 
     await user.click(await screen.findByRole('button', { name: 'Start Exam A' }));

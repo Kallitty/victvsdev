@@ -58,7 +58,7 @@ describe('ExamList', () => {
 
   describe('loading state', () => {
     it('shows a loading message while fetching exams', () => {
-      mockedGetExams.mockReturnValue(new Promise(() => {})); // never resolves
+      mockedGetExams.mockReturnValue(new Promise(() => undefined)); // never resolves
       renderWithProviders(<ExamList />);
       expect(screen.getByText('Loading sessions...')).toBeInTheDocument();
     });
@@ -105,7 +105,7 @@ describe('ExamList', () => {
 
   describe('when the fetch fails', () => {
     it('shows the empty state message', async () => {
-      const consoleErrorSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+      const consoleErrorSpy = vi.spyOn(console, 'error').mockImplementation(() => undefined);
       mockedGetExams.mockRejectedValue(new Error('Network error'));
       renderWithProviders(<ExamList />);
       expect(await screen.findByText('No sessions to display...')).toBeInTheDocument();

@@ -19,7 +19,7 @@ export function createDemoAuthService(storage: Storage = window.sessionStorage, 
 
   return {
     restore() {
-      let raw: string | null = null;
+      let raw: string | null;
       try {
         raw = storage.getItem(SESSION_STORAGE_KEY);
       } catch {
