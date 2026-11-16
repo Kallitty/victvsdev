@@ -17,6 +17,6 @@ export class MemoryStorage implements Storage {
     this.items.delete(key);
   }
   setItem(key: string, value: string) {
-    this.items.set(key, String(value));
+    this.items.set(key, value);
   }
 }

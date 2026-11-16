@@ -4,7 +4,7 @@ import { ApiDataError } from './validation';
 
 function serverMessage(data: unknown): string | null {
   if (typeof data === 'object' && data !== null && 'message' in data) {
-    const { message } = data as { message: unknown };
+    const { message } = data;
     if (typeof message === 'string' && message.trim() !== '') return message.trim().slice(0, 200);
   }
   return null;
@@ -19,7 +19,9 @@ export function getErrorMessage(error: unknown): string {
 
   if (isAxiosError(error)) {
     if (!error.response) return "Couldn't reach the exam service. Check your connection and try again.";
-    const { status, data } = error.response;
+    const { status } = error.response;
+    const data: unknown = error.response.data;
+
     if (status === 404) return 'That exam could not be found. It may have been removed.';
     if (status === 400 || status === 409 || status === 422) {
       return serverMessage(data) ?? 'The exam service rejected that change.';

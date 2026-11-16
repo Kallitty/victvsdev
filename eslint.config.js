@@ -34,6 +34,7 @@ export default defineConfig([
       '@typescript-eslint/restrict-template-expressions': ['error', { allowNumber: true }],
       '@typescript-eslint/no-confusing-void-expression': ['error', { ignoreArrowShorthand: true }],
       '@typescript-eslint/prefer-nullish-coalescing': ['error', { ignorePrimitives: { string: true } }],
+      'jsx-a11y/aria-role': ['error', { ignoreNonDOM: true }],
     },
   },
 
@@ -53,4 +54,8 @@ export default defineConfig([
   { files: ['public/**/*.js'], languageOptions: { globals: globals.browser, sourceType: 'script' } },
   // Last: switch off rules that would argue with Prettier.
   prettier,
+  {
+    files: ['src/test/**'],
+    rules: { 'react-refresh/only-export-components': 'off' },
+  },
 ]);
