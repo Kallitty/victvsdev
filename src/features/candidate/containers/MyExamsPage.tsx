@@ -1,22 +1,34 @@
-import { useQuery } from '@tanstack/react-query';
-import { useCallback } from 'react';
+import { Link } from 'react-router-dom';
 
 import { useCandidateSession } from '@/features/auth';
-import { type Exam, examsQueryOptions, ExamTime, normaliseCountry, StatusBadge } from '@/features/exams';
+import { type Exam, ExamTime, normaliseCountry, StatusBadge } from '@/features/exams';
 import { getErrorMessage } from '@/shared/api/errors';
 
-import { selectCandidateExams } from '../model/candidateExams';
+import { Countdown } from '../components/Countdown';
+import { useCandidateExams } from '../hooks/useCandidateExams';
+import { pendingExamNote } from '../model/countdown';
 import styles from './MyExamsPage.module.css';
 
 /** A read-only card. It never shows other candidates' names: they aren't this user's data. */
 function ExamCard({ exam }: { exam: Exam }) {
+  const when = exam.status === 'pending' ? pendingExamNote(exam) : null;
   return (
     <article className={styles.card} data-testid="candidate-exam">
       <div className={styles.cardTop}>
-        <h4>{exam.title}</h4>
+        <h4>
+          <Link to={`/me/exams/${exam.id}`}>{exam.title}</Link>
+        </h4>
         <StatusBadge status={exam.status} />
       </div>
-      <ExamTime exam={exam} />
+      <p className={styles.muted}>
+        <ExamTime exam={exam} />
+        {when ? (
+          <>
+            {' · '}
+            <Countdown text={when} />
+          </>
+        ) : null}
+      </p>
       <p className={styles.muted}>
         {exam.location ? normaliseCountry(exam.location.country) : 'Venue to be confirmed'} · {exam.language}
       </p>
@@ -28,15 +40,7 @@ export function MyExamsPage() {
   const session = useCandidateSession();
   // `select` derives this candidate's exams from the shared cache; polling picks up
   // an invigilator's status change on exam day without a reload.
-  const select = useCallback(
-    (exams: Exam[]) => selectCandidateExams(exams, session.candidateId),
-    [session.candidateId],
-  );
-  const { data, isPending, error, refetch } = useQuery({
-    ...examsQueryOptions(),
-    select,
-    refetchInterval: 60_000,
-  });
+  const { data, isPending, error, refetch } = useCandidateExams(session.candidateId);
 
   return (
     <main id="main" className={styles.page}>

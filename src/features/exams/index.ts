@@ -12,3 +12,4 @@ export { EXAM_STATUSES } from './model/types';
 export type { Candidate, Exam, ExamLocation, ExamStatus } from './model/types';
 export { useCandidatesQuery } from './hooks/useCandidatesQuery';
 export { examsQueryOptions } from './hooks/useExamsQuery';
+export { venueTimeZone } from './model/timeZone';

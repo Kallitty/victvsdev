@@ -2,11 +2,11 @@ import { lazy, Suspense } from 'react';
 import { Toaster } from 'react-hot-toast';
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 
+import { CandidateExamPage, MyExamsPage } from '@/features/candidate';
 import { Header } from '@/app/layout/Header';
 import Footer from '@/components/Footer';
 import { HomePage } from '@/app/pages/HomePage';
 import { homePathFor, RequireRole, SignInPage, useAuth } from '@/features/auth';
-import { MyExamsPage } from '@/features/candidate';
 import { ExamList } from '@/features/exams';
 import { ErrorBoundary } from '@/shared/ui/ErrorBoundary';
 
@@ -48,6 +48,7 @@ function App() {
 
               <Route element={<RequireRole role="candidate" />}>
                 <Route path="/me" element={<MyExamsPage />} />
+                <Route path="/me/exams/:examId" element={<CandidateExamPage />} />
               </Route>
 
               <Route path="/sessions" element={<LegacyRedirect to="/admin/sessions" />} />
